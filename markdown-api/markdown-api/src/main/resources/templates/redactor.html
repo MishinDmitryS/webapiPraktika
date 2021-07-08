@@ -1,0 +1,39 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+   <meta charset="UTF-8">
+   <title>Document</title>
+   <script type="text/javascript" src=" https://code.jquery.com/jquery-1.11.2.js "></script>
+</head>
+<body>
+<h1>только латинские символы</h1>
+<form method="post" action="/previewFile" >
+   <input type="file" id="js-file" accept=".md" > <br />
+   <textarea id="markdown" name="markdown" rows="25" cols="100"></textarea>
+   <br />
+   <button type="submit">Предпросмотр и сохранить</button>
+</form>
+
+<form method="post" action="/redactor">
+   <button type="reset">Сохранить файл</button>
+</form>
+<style type="text/css">
+textarea {
+	width: 50%;
+}
+</style>
+
+<script src="https://snipp.ru/cdn/jquery/2.1.1/jquery.min.js"></script>
+<script>
+$("#js-file").change(function(){
+	var reader = new FileReader();
+	reader.onload = function(e){
+		$("#markdown").val(e.target.result);
+	};
+	reader.readAsText($("#js-file")[0].files[0], "UTF-8");
+});
+</script>
+<script src="script.js"></script>
+</body>
+</html>
+
